@@ -13,7 +13,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://localhost:3000/fast');
+  const res = http.get('http://localhost:3000/unstable'); // using the unstable route for errors
 
   check(res, {
     'status is 200': (r) => r.status === 200,
