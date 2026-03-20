@@ -11,34 +11,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Test Suite
         uses: actions/checkout@v4
+        with:
+          path: tests-repo
+
+      - name: Checkout API
+        uses: actions/checkout@v4
+        with:
+          repository: Mysterion147/performance-test-api
+          path: api-repo
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install API Dependencies
-        run: npm install
+      - name: Start API
+        run: |
+          cd api-repo
+          npm install fastify
+          node server.js &
 
-      - name: Start API in Background
-        run: node server.js & 
-
-      - name: Wait for API to be ready
+      - name: Wait for API
         run: npx wait-on http://localhost:3000/fast
 
       - name: Setup k6
         uses: grafana/setup-k6-action@v1
 
       - name: Run k6 suite
-        run: k6 run complete-suite/performance-suite.js
-
-      - name: Upload Report Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: k6-report
-          path: complete-suite-report.html
+        run: k6 run tests-repo/complete-suite/performance-suite.js
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
