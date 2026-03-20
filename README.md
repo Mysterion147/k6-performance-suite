@@ -16,7 +16,7 @@ This project features a high-performance testing suite developed with **k6**. It
 * Detect memory leaks and performance degradation over time.
 * Validate system resilience and recovery after sudden traffic bursts.
 * Integrate automated performance thresholds for CI/CD readiness.
-### Target: simple Fastify API, you can check it here: https://github.com/Mysterion147/performance-test-api
+### Target: simple Fastify API, you can check it [here](https://github.com/Mysterion147/performance-test-api).
 
 ## 🛠️ Tech Stack
 * **Tool:** k6 (Grafana)
@@ -61,7 +61,7 @@ Este projeto apresenta uma suíte de testes de alta performance desenvolvida com
 * Detectar vazamentos de memória (memory leaks) e degradação de performance ao longo do tempo.
 * Validar a resiliência e recuperação do sistema após picos repentinos de tráfego.
 * Implementar limites (thresholds) automatizados para prontidão em CI/CD.
-### Alvo: API simples feita com Fastify, você pode conferi-la aqui: 
+### Alvo: API simples feita com Fastify, você pode conferi-la [aqui](https://github.com/Mysterion147/performance-test-api).
 
 ## 🛠️ Tecnologias
 * **Ferramenta:** k6 (Grafana)
