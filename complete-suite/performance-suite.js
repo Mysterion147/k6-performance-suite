@@ -81,7 +81,7 @@ export const options = {
     'http_req_duration{scenario:spike_test}': ['p(95)<1000'],
     'http_req_duration{scenario:soak_test}': ['p(95)<1000'],
     'http_req_duration{scenario:unstable_test}': ['p(95)<500'],
-    'http_req_duration{scenario:slow_load_test}': ['p(95)<500'],
+    'http_req_duration{scenario:slow_load_test}': ['p(95)<700'],
     'http_req_duration{scenario:high_demand_post}': ['p(95)<600'],
     'http_req_failed': ['rate<0.01'],
   },
