@@ -1,3 +1,5 @@
+![CI Status](https://github.com/Mysterion147/k6-performance-suite/actions/workflows/performance.yml/badge.svg)
+
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![k6](https://img.shields.io/badge/k6-7D64FF?style=for-the-badge&logo=k6&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
@@ -9,7 +11,26 @@
 ---
 
 ## English Version
-This project features a high-performance testing suite developed with **k6**. It aims to validate system scalability, reliability, and recovery through various load-testing strategies, simulating real-world high-traffic scenarios.
+This project features a high-performance testing suite developed with **k6**. It aims to validate system scalability, reliability, and recovery through various load-testing strategies, simulating real-world high-traffic scenarios. The project is automated with GitHub Actions.
+
+## ⚙️ CI/CD Integration (GitHub Actions)
+
+This project is fully automated using **GitHub Actions** to ensure performance integrity through an automated pipeline that focuses on **continuous delivery (CD) of test artifacts**.
+
+* **Workflow Pipeline**: 
+    1. Clones both Test Suite and [Performance API](https://github.com/Mysterion147/performance-test-api) repositories.
+    2. Spins up a Node.js environment to run the API as a sidecar service.
+    3. Executes the **k6 Performance Suite** with pre-defined thresholds.
+    4. **Automated Reporting**: On every push to `main`, a new HTML report is generated and deployed to GitHub Pages.
+
+#### 📊 Performance Report
+You can access the latest automated execution report here:
+[**View Live Performance Report 📈**](https://Mysterion147.github.io/k6-performance-suite/reports/complete-suite-report.html)
+
+#### 🛡️ Quality Gates (Thresholds)
+The build will **fail** if:
+* **P(95)** of requests exceeds **700ms** (Latency Gate).
+* Error rate is higher than **1%** (excluding the deliberate `/unstable` scenario).
 
 ## ⭐ Project Goals
 * Evaluate API behavior under different load profiles (Load, Stress, Spike, Soak).
@@ -44,17 +65,29 @@ The suite is consolidated into a single entry point (`performance-suite.js`) usi
 3. Run the complete suite:
    `k6 run complete-suite/performance-suite.js`
 
-## 📊 Performance Report
-The suite generates an interactive HTML report at the end of every run.
-* **Location:** `reports/**`
-* **Features:** Success rate (checks), p(95) latency, and requests per second (RPS) per group.
-<img width="1488" height="899" alt="image" src="https://github.com/user-attachments/assets/c231dca3-a104-4372-808d-f3e5cfe1ca6b" />
-
-
 ---
 
 ## Versão em Português
-Este projeto apresenta uma suíte de testes de alta performance desenvolvida com **k6**. O objetivo é validar a escalabilidade, confiabilidade e recuperação do sistema através de diversas estratégias de carga, simulando cenários reais de alto tráfego.
+Este projeto apresenta uma suíte de testes de alta performance desenvolvida com **k6**. O objetivo é validar a escalabilidade, confiabilidade e recuperação do sistema através de diversas estratégias de carga, simulando cenários reais de alto tráfego. O projeto é automatizado utilizando GitHub Actions.
+
+### ⚙️ Integração CI/CD (GitHub Actions)
+
+Este projeto é totalmente automatizado via **GitHub Actions** para garantir a integridade da performance através de um pipeline automatizado que foca na **entrega contínua (CD) de artefatos de teste**:
+
+* **Pipeline do Workflow**: 
+    1. Clona tanto o repositório da Suíte de Testes quanto o da [API de Performance](https://github.com/Mysterion147/performance-test-api).
+    2. Sobe um ambiente Node.js para rodar a API como um serviço auxiliar (sidecar).
+    3. Executa a **Suíte de Performance k6** com thresholds (limites) pré-definidos.
+    4. **Relatórios Automáticos**: A cada push na `main`, um novo relatório HTML é gerado e publicado via GitHub Pages.
+
+#### 📊 Relatório de Performance
+Você pode acessar o relatório da última execução automatizada aqui:
+[**Visualizar Relatório de Performance ao Vivo 📈**](https://Mysterion147.github.io/k6-performance-suite/reports/complete-suite-report.html)
+
+#### 🛡️ Quality Gates (Thresholds)
+O build irá **falhar** se:
+* O **P(95)** das requisições exceder **700ms** (Gate de Latência).
+* A taxa de erro for superior a **1%** (desconsiderando o cenário proposital `/unstable`).
 
 ## ⭐ Objetivos do Projeto
 * Avaliar o comportamento da API sob diferentes perfis de carga (Load, Stress, Spike, Soak).
@@ -88,9 +121,3 @@ A suíte está consolidada em um único arquivo (`complete-suite/performance-sui
 2. Clone este repositório.
 3. Execute a suíte completa:
    `k6 run complete-suite/performance-suite.js`
-
-## 📊 Relatório de Performance
-A suíte gera um relatório HTML interativo ao final de cada execução.
-* **Localização:** `reports/**`
-* **Destaques:** Taxa de sucesso (checks), latência p(95) e requisições por segundo (RPS) por grupo.
-<img width="1488" height="899" alt="image" src="https://github.com/user-attachments/assets/c45c186c-0fb3-40a6-a8b3-c6b93d213e98" />
